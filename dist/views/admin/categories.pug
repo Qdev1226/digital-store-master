@@ -1,0 +1,71 @@
+include ./assets/head.pug
+body.has-fixed-sidenav
+    include ./assets/templates/header.pug
+    main.admin-main
+        #loader.loader-fullscreen.hide
+            .loader-fullscreen__wrap
+                .preloader-wrapper.big.active
+                    .spinner-layer.spinner-green-only
+                        .circle-clipper.left
+                            .circle
+                        .gap-patch
+                            .circle
+                        .circle-clipper.right
+                            .circle
+        .container
+            .row
+                .col.s12
+                    h2 Редактирование категорий
+                    p На этой странице есть возможность добавлять новые категории, удалять старые и редактировать существующие.
+                .col.s12
+                    .card
+                        .card-content
+                            span.card-title Кол-во категорий
+                            .divider
+                            h3#categoriesCount #{categoriesCount}
+                .col.s12
+                    #categories.card
+                        .card-content
+                            .category-add
+                                h5 Добавить категорию
+                                .row
+                                    form(id="addCategory" action="/control-panel/categories/create" method="POST" enctype="multipart/form-data")
+                                        .input-field.col.l6.s12
+                                            input(id="title" name="title" type="text" required)
+                                            label(for="title") Название категории
+                                        .input-field.col.l6.s12
+                                            select#icons_select(name="img" required)
+                                                    option(value="" disabled selected)
+                                                        | Выберите иконку
+                                            label Иконка
+                                        .input-field.col.l6.s12
+                                            textarea(id="type" class="materialize-textarea" type="text" name="type" required)
+                                            label(for="type") Тип аккаунтов
+                                        .input-field.col.l6.s12
+                                            input(id="format" type="text" name="format" required)
+                                            label(for="format") Формат аккаунтов
+                                        .col.s12
+                                            button(type="submit" class="btn") Добавить категорию
+                            .divider
+                            .under-block
+                                .category-edit
+                                    .row
+                                        .input-field.col.s12
+                                            select#editCategory_select
+                                                option(value="" disabled selected)
+                                                    | Выберите категорию для редактирования
+                                            label Редактирование категории
+                                .category-delete
+                                    .row
+                                        form(id="deleteCategory" action="/control-panel/categories/delete" method="POST")
+                                            .input-field.col.s12
+                                                select#deleteCategory_select(name="category")
+                                                    option(value="" disabled selected)
+                                                        | Выберите категорию для удаления
+                                                label Удаление категории
+                                            .col.s12
+                                                button(type="submit" class="btn red ") Удалить             
+
+    include ./assets/templates/modals/edit_category.pug                               
+    include ./assets/templates/footer.pug
+    include ./assets/scripts.pug

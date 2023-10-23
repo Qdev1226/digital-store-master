@@ -1,0 +1,74 @@
+include ./assets/head.pug
+body.has-fixed-sidenav
+    include ./assets/templates/header.pug
+    main.admin-main
+        #loader.loader-fullscreen.hide
+            .loader-fullscreen__wrap
+                .preloader-wrapper.big.active
+                    .spinner-layer.spinner-green-only
+                        .circle-clipper.left
+                            .circle
+                        .gap-patch
+                            .circle
+                        .circle-clipper.right
+                            .circle
+        .container
+            .row
+                .col.s12
+                    h2 Редактирование товаров
+                    p Добавляйте новые товары или редактируйте старые.
+                .col.s12
+                    #items.card
+                        .card-content
+                            span.card-title Список товаров
+                            .search-field
+                                .nav-wrapper
+                                    .input-field
+                                        input#search(type="search" required placeholder="Введите название товара и нажмите enter")
+                                        label.label-icon(for="search" style="cursor: pointer;")
+                                            i.material-icons search
+                                        i.material-icons close
+                            #edit.table-items.table
+                                table.highlight
+                                    thead
+                                        tr
+                                            th Иконка
+                                            th Наименование
+                                            th Категория
+                                            th Дата добавления
+                                            th Количество
+                                            th Цена
+                                            th Редактирование
+                                            
+                                    .divider
+                                    tbody
+                        ul#pagination.pagination.center(data-page="1")
+                        .divider
+                        .items-add
+                            h5 Добавить новый товар
+                            .row
+                                form(action="/control-panel/items/create" method="POST")
+                                    .input-field.col.l6.s12
+                                        input(id="title" type="text" name="title" required)
+                                        label(for="title") Название товара
+                                    .input-field.col.l6.s12
+                                        input(id="price" type="text" name="price" pattern="([0-9\.]+)" required) 
+                                        label(for="price") Цена товара в рублях ₽
+                                    .input-field.col.l6.s12
+                                        textarea(id="description" class="materialize-textarea" type="text" name="description" required)
+                                        label(for="description") Описание товара
+                                    .input-field.col.l6.s12
+                                        select#selectCategories(name="category" required)
+                                            option(value="" disabled selected)
+                                                    | Выберите категорию
+                                        label Категория товара
+                                    .input-field.col.s12
+                                        textarea(class="materialize-textarea" type="text" placeholder="Пречеслите аккаунты в вашем формате через запятую." name="data" required)
+                                        label Данные товара
+                                    .col.s12
+                                        button(type="submit" class="btn") Добавить товар
+
+    include ./assets/templates/modals/delete_item.pug                       
+    include ./assets/templates/modals/edit_item.pug                                 
+    include ./assets/templates/footer.pug
+    include ./assets/scripts.pug

@@ -1,0 +1,102 @@
+//- Head HTML
+include ./assets/head.pug
+//- Header Template
+include ./assets/templates/header.pug
+
+main.main-section
+  include ./assets/templates/modals/cart.pug
+  include ./assets/templates/modals/pay.pug
+  #notification
+  .container
+    .row
+      // Information Block
+      .col.s12
+        #information.information.hide
+          .information-content.block-content
+            .information-title
+              h2.small-title Важная информация:
+            .information-text
+              != store.info
+            .information-close
+              button#information-close.waves-effect.btn.red Закрыть
+      // Information Block END
+
+      // Category Block
+      .col.s12
+        #category.category
+          .category-content.block-content
+            .category-title.block-title
+              i.material-icons filter_list
+              h2.small-title Выберите катерорию:
+            .category-items
+              ul
+                li
+                  a#catLi.active(href='#' data-category='all') Все товары:
+                each val in categories
+                  li
+                    a#catLi(href='#' data-category=val.toLowerCase()) #{val}
+      // Category Block END
+
+      // Filter Block
+      .col.s12
+        #filter.filter
+          .filter-content.block-content
+            .filter-title.block-title
+              i.material-icons sort
+              h2.small-title Фильтровать товары:
+            .filter-options
+              form(action='#')
+                label(data-sortBy='ascending')
+                  input#ascending.with-gap(type='radio' name='filter')
+                  span Подешевле
+                label
+                  input#descending.with-gap(type='radio' name='filter')
+                  span Подороже
+                label
+                  input#newer.with-gap(type='radio' name='filter')
+                  span Поновее
+                label
+                  input#older.with-gap(type='radio' name='filter')
+                  span Постарее
+      // Filter Block END
+
+      // Items Block
+      .col.s12
+        #items.items
+          #pay-js.items-content.block-content
+            .items-title.block-title
+              i.material-icons list
+              h2.small-title Список товаров:
+            #loader.progress
+              .indeterminate(style="width: 40%") 
+            #roster
+            #pagination.items-pagination.hide
+              .divider
+              ul.pagination
+                li.disabled
+                  a(href='#')
+                    i.material-icons chevron_left
+                li.active
+                  a(href='#') 1
+                li.waves-effect
+                  a(href='#') 2
+                li.waves-effect
+                  a(href='#') 3
+                li.waves-effect
+                  a(href='#') 4
+                li.waves-effect
+                  a(href='#') 5
+                li.waves-effect
+                  a(href='#')
+                    i.material-icons chevron_right
+            .items-footer
+              .divider
+              .items-footer__info
+                .items-info__title.block-title
+                  i.material-icons info
+                  h3.med-title Информация
+                != store.infoBottom
+      // Items Block END
+
+//- Footer Template
+include ./assets/templates/footer.pug

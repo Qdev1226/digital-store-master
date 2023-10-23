@@ -1,0 +1,28 @@
+doctype
+html(lang='ru')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='Cоntent-Type' cоntent='text/html;' charset='utf-8')
+        meta(name="viewport" content="width=device-width")
+        title #{title}
+        // Materialize CSS
+        link(rel="stylesheet", href="/css/materialize.min.css")
+        // Style CSS
+        link(rel="stylesheet", href="/css/style.css")
+        // Media CSS
+        link(rel="stylesheet", href="/css/media.css")
+        // Material Icons
+        link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+        if store
+            style.
+                nav, footer.main-footer, .items-category, .category-items li .active, .category-items li a:hover, .progress .indeterminate, button {
+                    background-color: #{store.color} !important;
+                }
+                button:hover {
+                    background-color: #{store.color} !important;
+                    opacity: .7;
+                }
+                .progress {
+                    background-color: #deecea;
+                }
+    body

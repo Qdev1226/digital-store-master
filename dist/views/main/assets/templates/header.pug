@@ -1,0 +1,48 @@
+- var currentPage = pageName;
+header#header.main-header
+  nav
+    // Menu-Mobile Button 
+    a.sidenav-trigger(href='#' data-target='slide-out')
+      i.material-icons menu
+    .nav-wrapper.container
+      a.brand-logo.waves-effect.waves-light(href='/')
+        i.material-icons shop_two
+        span#header-title #{store.title}
+      ul#desktop-nav.right.hide-on-med-and-down(data-current=currentPage)
+        li#page(data-page='index')
+          a(href='/') Главная
+        li#page(data-page='how-to-buy')
+          a(href='/how-to-buy') Как купить товар
+        li#page(data-page='contacts')
+          a(href='/contacts') Контакты
+        li#page(data-page='comments')
+          a(href='/comments') Отзывы
+        li#page(data-page='my-orders')
+          a(href='/my-orders') Мои покупки
+  // Menu-Mobile Content 
+  ul#slide-out.sidenav.mobile-nav
+    li
+      a.subheader Навигация
+    li
+      .divider
+    li#page(data-page='index')
+      a(href='/')
+        i.material-icons home
+        | Главная
+    li#page(data-page='how-to-buy')
+      a(href='/how-to-buy')
+        i.material-icons info
+        | Как купить товар
+    li#page(data-page='contacts')
+      a(href='/contacts')
+        i.material-icons contact_support
+        | Контакты
+    li#page(data-page='comments')
+      a(href='/comments')
+        i.material-icons comment
+        | Отзывы
+    li#page(data-page='my-orders')
+      a(href='/my-orders')
+        i.material-icons shopping_cart
+        | Мои покупки
+    // Menu-Mobile Content END

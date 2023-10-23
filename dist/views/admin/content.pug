@@ -1,0 +1,43 @@
+include ./assets/head.pug
+body.has-fixed-sidenav
+    include ./assets/templates/header.pug
+    main.admin-main
+        .container
+            .row
+                .col.s12
+                    h2 Редактирование контента
+                    p Изменяйте текст на сайте магазина только через эту страницу.
+                .col.s12
+                    #content.card
+                        .card-content
+                            .content-update
+                                h5 Редактировать контент
+                                .row
+                                    form(action="/control-panel/content/update" method="POST")
+                                        .input-field.col.s12
+                                            input(id="title" type="text" name="title" value=store.title)
+                                            label(for="title") Название магазина
+                                        .input-field.col.s12
+                                            input(id="email" type="email" name="email" value=store.email)
+                                            label(for="email") Почта службы поддержки
+                                        .input-field.col.s12
+                                            textarea(id="contacts" class="materialize-textarea" type="text" name="contacts") #{store.contacts}
+                                            label(for="contacts") Контакты магазина
+                                        .input-field.col.s12
+                                            textarea(id="recommendations" class="materialize-textarea" type="text" name="recommendations") #{store.recommendations}
+                                            label(for="recommendations") Рекомендации к покупке аккаунтов
+                                        .input-field.col.s12
+                                            textarea(id="info" class="materialize-textarea" type="text" name="info") #{store.info}
+                                            label(for="info") Блок с важной информацией
+                                        .input-field.col.s12
+                                            textarea(id="infoBottom" class="materialize-textarea" type="text" name="infoBottom") #{store.infoBottom}
+                                            label(for="infoBottom") Блок с информацией вконце страницы
+                                        .input-field.col.s12
+                                            textarea(id="howToBuy" class="materialize-textarea" type="text" name="howToBuy") #{store.howToBuy}
+                                            label(for="howToBuy") Как купить товар в магазине
+                                        .edit_success.col.s12
+                                            button(type="submit" class="btn waves-effect") Сохранить
+
+                                   
+    include ./assets/templates/footer.pug
+    include ./assets/scripts.pug

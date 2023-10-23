@@ -1,0 +1,56 @@
+//- Head HTML
+include ./assets/head.pug
+//- Header Template
+include ./assets/templates/header.pug
+
+main.main-section
+  include ./assets/templates/modals/cart.pug
+  include ./assets/templates/modals/pay.pug
+  .container
+    .row
+      .col.s12
+        #product.product.background
+          .product-content
+            .product-breadcrumb
+              #breadcrumb.breadcrumb
+                ul
+                  li
+                    a(href='/') Главная
+                  li
+                    a#breadcrumbBtn(href='/' data-category=category.toLowerCase()) #{category}
+                  li #{title}
+              hr
+            .product-title.block-title
+              h1 #{title}
+                br
+                small(style="font-size: 12px") Дата добавления: #{date.toLocaleDateString()}
+            .product-info
+              .product-info__left
+                #pay-js.product-left__pay(data-id=id data-title=title data-count=count data-price=price)
+                  img(src='../img/service-icons/'+image alt='#')
+                  button#payOpen.waves-effect.waves-light.btn Купить
+                .product-info__cost
+                  .product-info__count
+                    span #{count} шт
+                  p Цена за 1шт.
+                  .product-info__price
+                    span #{price}₽
+              .product-info__right
+                .product-right__title
+                  span Описание:
+                  hr
+                  != description
+                .product-right__content
+                  h2 Тип аккаунтов  #{category}
+                  != type
+                  h2 Формат аккаунтов #{category}
+                  != format
+                  hr
+                  h3 Рекомендации к покупке аккаунтов.
+                  != store.recommendations
+                      
+                  h3 Отзывы о товаре
+                #disqus_thread
+
+//- Footer Template
+include ./assets/templates/footer.pug

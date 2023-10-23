@@ -1,0 +1,34 @@
+// Edit Item
+#editItemModal.c_modal-wrap.hide
+  .container
+    .row
+      .c_modal
+        .c_modal-content.editItem
+          .modal-content
+            .modal-content__header(style="margin-bottom: 1rem;")
+              h4.small-title Редактирование товара
+              span#editItemClose.modal-close
+                i.material-icons close
+            .modal-content__form
+                form(action="/control-panel/items/update" method="POST")
+                    .input-field
+                        input.id(style="color: gray;" type="text" name="id" required readonly)
+                        label ID товара
+                    .input-field
+                        input.title(placeholder="Введите новое название товара" type="text" name="title" required)
+                        label Новое название товара
+                    .input-field
+                        input.price(placeholder="Введите цену товара ₽" type="text" name="price" pattern="([0-9\.]+)" required)
+                        label Цена товара ₽
+                    .input-field
+                        textarea.description(placeholder="Введите описание товара" class="materialize-textarea" type="text" name="description" required)
+                        label Описание товара
+                    .input-field
+                        select.category(name="category")
+                        label Категория
+                    .input-field
+                        textarea.data(class="materialize-textarea" type="text" name="data" placeholder="Перечислите аккаунты через запятую." required)
+                        label Данные товара
+                    .edit_success
+                        button(type="submit" class="btn orange waves-effect" style="width: 100%;height:50px") Редактировать
+// Edit Category END

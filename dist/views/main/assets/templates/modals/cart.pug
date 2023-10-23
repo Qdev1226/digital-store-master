@@ -1,0 +1,33 @@
+// Cart Modal
+#cart.c_modal-wrap.hide
+  .container
+    .row
+      .c_modal
+        .c_modal-content
+          .modal-content
+            .modal-content__header
+              h4.small-title Корзина
+              span#cartClose.modal-close
+                i.material-icons close
+            #modalList.modal-content__items
+            .modal-content__info
+              .modal-content__counter
+                span Всего товаров в корзине
+                span
+                  b#modalCounter 0
+              .modal-content__pay
+                span
+                  b Сумма к оплате
+                span
+                  b#totalPrice 0 ₽
+            form.modal-content__purchase.hide
+              span Информация необходимая для оплаты
+              .email-field
+                label(for='email') Ваш E-mail
+                input(required='' type='email' name='email')
+              .payment-field
+                label(for='payment') Способ оплаты
+                select(name='payment')
+                  option(value='qiwi' data-icon='../img/payments-icons/qiwi.svg') QIWI
+                button.purchase-btn.waves-effect.btn Перейти к оплате
+// Cart Modal END

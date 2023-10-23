@@ -1,0 +1,75 @@
+header.admin-header
+        form(id="logout" action="/logout?_method=DELETE" method="POST")
+        .navbar-fixed
+            nav.navbar.white
+                .nav-wrapper
+                    a(href="#" data-target="slide-out" class="sidenav-trigger" style="color: #000;")
+                        i.material-icons menu
+                    a(href="#" class="brand-logo grey-text text-darken-4") #{pageName[0]}
+        ul#slide-out.sidenav.sidenav-fixed.control-panel
+            li
+            .user-view
+                .background
+                    img(src="/img/admin/background-user.jpg", alt="#")
+                span(style="padding-top: 5px;padding-bottom:10px;display:block;").white-text Панель управления
+                a(href="#")
+                    img(class="circle" src="/img/admin/avatar-user.jpg", alt="alt")
+                a(href="#")
+                    span.white-text.name #{name}
+                a(href="#")
+                    span.white-text.email #{email}
+            li
+                a(href="#" class="subheader") Управление аккаунтом
+            li
+                a(href="#" class="waves-effect" onclick="document.getElementById('logout').submit()") Выйти
+                    i.material-icons exit_to_app
+            li
+                .divider
+            li#currentPage(data-current=pageName[1])
+                a(href="#" class="subheader") Управление сайтом
+            li.no-padding
+            li#home.active
+                a(href="/control-panel" class="collapsible-header waves-effect active")
+                    i.material-icons dashboard
+                    | Статистика
+            ul.collapsible
+                li
+                    a(href="#" class="collapsible-header waves-effect")
+                        i.material-icons edit
+                        | Редактирование
+                    .collapsible-body
+                        ul
+                            li(data-page="items")
+                                a(href='/control-panel/items')
+                                    i.material-icons list
+                                    | Товары
+                            li(data-page="categories")
+                                a(href='/control-panel/categories')
+                                    i.material-icons category
+                                    | Категории
+                            li(data-page="icons")
+                                a(href='/control-panel/icons')
+                                    i.material-icons add_photo_alternate
+                                    | Иконки
+                            li(data-page="content")
+                                a(href='/control-panel/content')
+                                    i.material-icons visibility
+                                    | Контент на сайте
+                            li(data-page="theme")
+                                a(href='/control-panel/theme')
+                                    i.material-icons create
+                                    | Оформление
+            ul.collapsible
+                    li
+                        a(href="#" class="collapsible-header waves-effect")
+                            i.material-icons build
+                            | Настройки
+                        .collapsible-body
+                            ul
+                                li(data-page="administrators")
+                                    a(href='/control-panel/administrators')
+                                        i.material-icons supervisor_account
+                                        | Администратор
+//- Модальные окна
+include ./modals/help.pug
+include ./modals/news.pug

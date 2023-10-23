@@ -1,0 +1,62 @@
+include ./assets/head.pug
+body.has-fixed-sidenav
+    include ./assets/templates/header.pug
+    main.admin-main
+        #loader.loader-fullscreen.hide
+            .loader-fullscreen__wrap
+                .preloader-wrapper.big.active
+                    .spinner-layer.spinner-green-only
+                        .circle-clipper.left
+                            .circle
+                        .gap-patch
+                            .circle
+                        .circle-clipper.right
+                            .circle
+        .container
+            .row
+                .col.s12
+                    h2 Статистика
+                .col.l4.m6.s12
+                    .card
+                        .card-content
+                            span.card-title Сумма проданных товаров
+                            .divider
+                            h3 #{sum} ₽
+                .col.l4.m6.s12
+                    .card
+                        .card-content
+                            span.card-title Кол-во проданных товаров
+                            .divider
+                            h3 #{quantitySold}
+                .col.l4.s12
+                    .card
+                        .card-content
+                            span.card-title Общее кол-во товаров на сайте
+                            .divider
+                            h3 #{count}
+                .col.s12
+                    #dashboard.card
+                        .card-content
+                            span.card-title Список покупателей
+                            .search-field
+                                .nav-wrapper
+                                    .input-field
+                                        input#search(type="search" required placeholder="Введите номер заказа")
+                                        label.label-icon(for="search")
+                                            i.material-icons search
+                                        i.material-icons close
+                            .table-buyers
+                                table.highlight
+                                    thead
+                                        tr
+                                            th Почта
+                                            th Способ оплаты
+                                            th Дата оплаты
+                                            th Сумма
+                                            th Информация о покупке
+                                    .divider
+                                    tbody    
+                        ul#pagination.pagination.center(data-page="1")
+    include ./assets/templates/modals/bill_data.pug                
+    include ./assets/templates/footer.pug
+    include ./assets/scripts.pug
